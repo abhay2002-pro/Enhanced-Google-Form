@@ -4,7 +4,7 @@ const { ServerConfig, DatabaseConfig } = require("./config");
 const apiRoutes = require("./routes");
 
 // connect to Database
-DatabaseConfig.connectDB();
+DatabaseConfig();
 
 const app = express();
 
