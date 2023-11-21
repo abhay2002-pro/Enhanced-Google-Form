@@ -5,7 +5,7 @@ const { SuccessResponse, ErrorResponse } = require("../utils/common");
 /**
  * Create a new user.
  * 
- * POST : /
+ * POST : /users
  * req.body {username: 'abhay', email: 'abhayray2002@gmail.com', password: 'xxxxxxxxx',}
  */
 async function createUser(req, res) {
