@@ -6,9 +6,9 @@ const schema = new mongoose.Schema({
     ref: "Form",
     required: true,
   },
-  responderId: {
+  responderEmail: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    unique: true,
     required: true,
   },
   responseMetadata: {
