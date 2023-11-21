@@ -7,14 +7,16 @@ const schema = new mongoose.Schema({
     required: true,
   },
   responderEmail: {
-    type: mongoose.Schema.Types.ObjectId,
-    unique: true,
+    type: String,
     required: true,
   },
   responseMetadata: {
     type: Object,
   },
 });
+
+// Make the combination of responderEmail and formId unique
+schema.index({ formId: 1, responderEmail: 1 }, { unique: true });
 
 const Response = mongoose.model("Response", schema);
 
