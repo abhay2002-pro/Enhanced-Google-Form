@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { ENUMS } = require('../utils');
+const { ENUMS } = require('../utils/common');
 
 const schema = new mongoose.Schema({
   formId: {
@@ -21,6 +21,6 @@ const schema = new mongoose.Schema({
   },
 });
 
-const Form = mongoose.model("Form", schema);
+const Question = mongoose.model("Question", schema);
 
-module.exports = Form;
+module.exports = Question;

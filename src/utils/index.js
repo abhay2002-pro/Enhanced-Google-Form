@@ -1,3 +1,1 @@
-module.exports = {
-    ENUMS: require('./enums')
-}
+module.exports = {};

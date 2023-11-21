@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-  form: {
+  formId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Form",
     required: true,
   },
-  responder: {
+  responderId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
