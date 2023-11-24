@@ -12,7 +12,7 @@ async function createResponse(req, res) {
     try {
         const form = await ResponseServices.createResponse({
             formId: req.body.formId,
-            responderEmail: req.body.responderEmail,                
+            responderPhoneNumber: req.body.responderPhoneNumber,                
             responseMetadata: req.body.formMetadata
         });
         SuccessResponse.data = form;

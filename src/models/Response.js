@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
     ref: "Form",
     required: true,
   },
-  responderEmail: {
+  responderPhoneNumber: {
     type: String,
     required: true,
   },
@@ -16,7 +16,7 @@ const schema = new mongoose.Schema({
 });
 
 // Make the combination of responderEmail and formId unique
-schema.index({ formId: 1, responderEmail: 1 }, { unique: true });
+schema.index({ formId: 1, responderPhoneNumber: 1 }, { unique: true });
 
 const Response = mongoose.model("Response", schema);
 
