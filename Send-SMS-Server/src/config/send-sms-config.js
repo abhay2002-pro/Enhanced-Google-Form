@@ -1,10 +1,10 @@
-import twilio from "twilio";
+const twilio = require("twilio");
+const ServerConfig = require("./server-config")
 
-const account_sid = "AC483b2948b26ff1f13a9bc03380a88483";
-const auth_token = "afa672068de24fe46f18fd395534d810";
+const account_sid = ServerConfig.ACCOUNT_SID;
+const auth_token = ServerConfig.AUTH_TOKEN;
 
 const sendSMS = (details) => {
-  console.log("Details");
 
   const client = new twilio(account_sid, auth_token);
   const message = `Your response has been received. You have filled the form with form Id - ${details.formId}`;
@@ -22,5 +22,6 @@ const sendSMS = (details) => {
       console.error("Error sending SMS:", error.message);
     });
 };
-
-export default sendSMS;
+module.exports = {
+  sendSMS
+}
