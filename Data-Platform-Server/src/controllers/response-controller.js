@@ -1,6 +1,8 @@
 const { StatusCodes } = require('http-status-codes');
 const { ResponseServices } = require("../services");
 const { SuccessResponse, ErrorResponse } = require("../utils/common");
+const { KafkaConfig } = require("../config")
+const { Partitioners } = require("kafkajs");
 
 /**
  * Submit a new response.
@@ -15,6 +17,25 @@ async function createResponse(req, res) {
             responderPhoneNumber: req.body.responderPhoneNumber,                
             responseMetadata: req.body.formMetadata
         });
+
+         // Configuring kafka producer
+        const producer = KafkaConfig.kafka.producer({
+            createPartitioner: Partitioners.LegacyPartitioner,
+        });
+
+        await producer.connect();
+        
+        await producer.send({
+            topic: "form-submissions",
+            messages: [
+                {
+                    value: JSON.stringify(form),
+                },
+            ],
+        });
+
+        await producer.disconnect();
+        
         SuccessResponse.data = form;
         return res
                 .status(StatusCodes.CREATED)

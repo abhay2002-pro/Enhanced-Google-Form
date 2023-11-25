@@ -1,0 +1,17 @@
+{
+  "name": "google_sheet_lamda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "googleapis": "^128.0.0",
+    "kafkajs": "^2.2.4",
+    "mongoose": "^8.0.1"
+  }
+}
