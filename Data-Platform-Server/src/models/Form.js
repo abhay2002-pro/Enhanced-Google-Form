@@ -9,7 +9,6 @@ const schema = new mongoose.Schema({
   formName: {
     type: String,
     required: true,
-    unique: true,
   },
   formMetaData: {
     type: Object,

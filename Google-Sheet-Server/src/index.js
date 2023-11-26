@@ -47,12 +47,17 @@ async function startKafkaConsumer() {
       // Handle Kafka message
       const value = message.value.toString();
 
-      const parsedValue = JSON.parse(message.value.toString());
+      console.log(value)
+
+      const parsedValue = JSON.parse(value);
 
       const values = [parsedValue.formId, parsedValue.responderPhoneNumber];
       
       try {
-        await writeSheetData("1Z1LUVTtfr--p_5Bx-w6z4pfzbmMb-gzQ5HNom4yLzWU", values);
+        if (parsedValue.spreadsheetId === undefined) {
+          throw new Error("spreadsheetId is missing in the Kafka message");
+        }
+        await writeSheetData(parsedValue.spreadsheetId, values);
       } catch (error) {
         console.error("Error writing to Google Sheet:", error);
       }

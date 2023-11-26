@@ -6,7 +6,7 @@ const { SuccessResponse, ErrorResponse } = require("../utils/common");
  * Create a new company.
  * 
  * POST : /companies
- * req.body {companyName: 'Atlan', formMetadata: 'Atlan is an active metadata platform for modern data teams, that helps them discover, understand, trust, and collaborate on data assets.'}
+ * req.body {companyName: 'Atlan', formMetaData: 'Atlan is an active metadata platform for modern data teams, that helps them discover, understand, trust, and collaborate on data assets.'}
  */
 async function createCompany(req, res) {
     try {
