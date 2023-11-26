@@ -49,10 +49,10 @@ The choice of MongoDB was made due to the unstructured format of forms and respo
 |    Companies      |         |      Answers         |
 +-------------------+         +----------------------+
 | _id               |         | _id                  |
-| companyName       |		  | formId               |
+| companyName       |		      | formId               |
 | companyMetaData   |         | responderPhoneNumber |
 |                   |         | responseMetadata     |
-|					|		  |	                     |
+|					          |		      |	                     |
 +-------------------+         +----------------------+
          |                            |
          |                            |
@@ -60,7 +60,7 @@ The choice of MongoDB was made due to the unstructured format of forms and respo
          |                            |
          |                            |
 +-------------------+         +---------------------+
-|     Forms     	|         |                     |
+|     Forms     	  |         |                     |
 +-------------------+         +---------------------+
 | _id               |         | _id                 |
 | companyId         |---------| formId              |
