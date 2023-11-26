@@ -92,5 +92,31 @@ The choice of MongoDB was made due to the unstructured format of forms and respo
 +-------------------+         +---------------------+
 ```
 
+# Running the Code Instructions
 
+Follow these steps to set up and run the code:
 
+## Step 1: Start Docker Compose
+
+Run the following command in your terminal to start the Docker containers:
+
+```bash
+docker-compose up
+```
+## Step 2: Create Kafka Topic
+
+In a new terminal, execute the following command to create a Kafka topic:
+
+```bash
+docker exec -it kafka /opt/bitnami/kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic form-submissions
+```
+
+## Step 3: Run Servers
+
+Ensure that you first run the 'Data-Platform-Server' before the other two servers. Navigate to the 'Data-Platform-Server' directory in the terminal and execute:
+
+```bash
+npm start
+```
+
+After starting the 'Data-Platform-Server', you can proceed to start the other two servers in separate terminals using the same command.
