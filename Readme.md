@@ -1,3 +1,6 @@
+## MongoDB Choice:
+The choice of MongoDB was made due to the unstructured format of forms and responses. MongoDB's flexible schema allows for easy adaptation to changing requirements and supports the dynamic nature of form data.
+
 # Database Design Specification
 
 ## 1. Companies Collection:
