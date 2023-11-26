@@ -111,7 +111,44 @@ In a new terminal, execute the following command to create a Kafka topic:
 docker exec -it kafka /opt/bitnami/kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic form-submissions
 ```
 
-## Step 3: Run Servers
+## Step 3: Configure Environment Variables
+
+Each server requires specific environment variables to be set in a `.env` file located in their respective root folders.
+
+### Data-Platform-Server
+
+- **PORT**: Define the desired port number.
+- **MONGODB_URI**: Specify the MongoDB connection URI.
+
+Example `.env` file for Data-Platform-Server:
+```env
+PORT=3000
+MONGODB_URI=mongodb://localhost:27017/mydatabase
+```
+
+### Google-Sheet-Server
+
+- **PRIVATEKEY**: Provide the Google service account's private key.
+- **CLIENTEMAIL**: Input the client email associated with the Google project.
+
+Example `.env` file for Google-Sheet-Server:
+```env
+PRIVATEKEY="-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCtHHcGAsonRf/B\nn1ucPvFAgPgSpd/L+9B81HRePVl99Roo5lh3FPU2qtSh/wDS+h2y1OhwPRD/xjWW\njHopFrIwvRCDB+t//UajJjIbXjbt/rK32gkUR2iyBBodxBYYHdDfABvUYX3l8zqY\nX7TdOCxJuBH5Hl2FZG700Rw/nIkOze8beJs8zSOysJZWwUA1isHCHUZP9tf045lf\nojYQ0LfPUMST57m5ObmP72WTBsw/1NVMgGEq3Tu9vye1tti2kh7i6ideJfrf5BWQ\njkHJPUs7SHDeM/j6aY97FwPTkTfBv5/A7idSA4bHQHtj67kLj2O7PbR7Cg8Fgf3j\nHpy9lN+rAgMBAAECggEAUi/J+HIZnNS4bKomWcNuUZQJcv0Kh/NZU/Kf/t/8nXbh\nARr/VCYAl4A6bGC/eOrjb7RyWFs9t1lYts2h7+EFH2ubq8H2VnEeeLXZIzIzPQHn\nwq7DEbwnYiDdb1VZsgBx2nXYQJg6qBI2twH1QfP53tQDwHTgrMR2g0fGNBMy5PIp\n6NgJeVJK8Ggv1zEtdhKS88mbOb2kp2G9YxIZo32bd4smS/h/ZJIj5+UNommM0CDU\nFw6SzAqcCTiHwar3RwiVc/v7NNrWkwGLTtOXVOq6fyl3mLpoUgkaF+e7OH7a2zT1\nP/tYCvcK6jnX1e7N4liCJt880Hty8UwQjGpFiaYDsQKBgQDvpiUXI/nqn+dKNDJu\ngkdiqyIYu7rlDxBjT/n9mdXxqIS+i93xI9H13ucwHT5pB2DaEFVwD3jUEWeZCGoz\nFYGsl7lT6KTi7/bae/9d8Wv02O2xrI3bGgrochGkJtPjLFR3FoR8rCH2/K0nkLPc\npJHjttEAMTKyFwT6dirmYiIgsQKBgQC47CFUJKRW6dxfCPL4ITFefHX4zL0i84dz\n4JMIVyDTzul/FIAvXPiv14vQel5AuXpxQxC3obKK5bRvhW86dabtN/8AcwPZKlrD\nY6bRo6VCJR/Z3MKDncFH2nMeFxCwuIT2EOM/KtTWrLT4S0Vr8fkXDb9boii5Fndv\nsIs4o5V9GwKBgQDf2TGMC+7FWdeRWHBDCS3k3DVdJP3ON+P24B2C5M8Si3ZzBfKp\n6+uS3kLUjnxdXqb5CYjEw675Z8h9CX8peE1ICfDyj7x0vfC25FwERB2y924PKD7Z\nCdpmhSY1To9dA2tiUYYvbhnLuvmCm4dl8dLUAU/3/fx8nUPpL7eiusdmAQKBgDdr\nhR2Lkbj+g23z56VXhU007cIv0es8ovamckpImm0AENhmE3ieW2WPqrZDRiYNsFVr\nbQIrsq+P4gCeM9SIWAu2AXVoAto9qE/weJlRewCU0bPgRmddiwR2wpNdBEKCOk7o\nhsJymrDvt5jGLjsInMc89oGG2r+FrSvK9B54YB/LAoGBAMPdmwSfA+m6eo79NV5d\non50/M4mZI/QFQD2i3f5OdoQvoSBYzG8LN+kMd1tWiHqPj7riqII20MjSCuERl7z\nEjbI68R3da1Q95vnC2uxoba4z/U9vAcsQgbGsI+IMuMIBGFXZ+fmbyNHlwHNOLQM\nGiaeJj8QG8GKJXx16xY+fFF+\n-----END PRIVATE KEY-----\n"
+CLIENTEMAIL="atlan-backend-datam.gserviceaccount.com"
+```
+
+### Send-SMS-Server
+
+- **ACCOUNT_SID**: Provide the Twilio account SID.
+- **AUTH_TOKEN**: Input the Twilio authentication token.
+
+Example `.env` file for Send-SMS-Server:
+```env
+ACCOUNT_SID=your_twilio_account_sid
+AUTH_TOKEN=your_twilio_auth_token
+```
+
+## Step 4: Run Servers
 
 Ensure that you first run the 'Data-Platform-Server' before the other two servers. Navigate to the 'Data-Platform-Server' directory in the terminal and execute:
 
