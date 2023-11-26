@@ -1,4 +1,4 @@
-## Chosen Approach
+# Chosen Approach
 - Utilizing a microservices architecture with a task queue for asynchronous processing. Each post-submission action, including Google Sheets integration, is handled by a dedicated microservice.
 
 ## Solution Architecture
