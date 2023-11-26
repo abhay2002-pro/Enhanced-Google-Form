@@ -1,4 +1,20 @@
-## Aproach:
+## Solution Architecture
+
+### Data-Platform-Server
+
+- Manages CRUD operations for forms, responses, questions, and companies.
+- Raises events in Kafka upon data submission.
+
+### Google-Sheet-Server
+
+- Listens to the "form-submissions" Kafka topic.
+- Parses messages and writes relevant data to Google Sheets.
+
+### SMS-Server
+
+- Listens to the "form-submissions" Kafka topic.
+- Parses messages and sends SMS notifications based on response data.
+
 ![Design](https://github.com/abhay2002-pro/Atlan-Backend-Assignment/blob/main/System-Design.png)
 
 ## MongoDB Choice:
